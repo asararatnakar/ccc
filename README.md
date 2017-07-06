@@ -8,10 +8,37 @@ This repository is to maintain the latest chaincodechecker code (This is tempora
 * Clone the repo 
   git clone https://github.com/asararatnakar/ccc.git
 
-- execute the commands:
+- execute the following commands from different terminals :
 * cd ccc
-* execute the shell script `runtest.sh` to create channel artifacts , create channel,  join channel. also install and instantiates the chaincode.
-  `./runtest.sh`
+
+### Terminal-1
+
+```
+mkdir -p hyperledger/production/orderer
+
+export PATH=$PATH:$PWD/bin
+
+ORDERER_FILELEDGER_LOCATION=./hyperledger/production/orderer ORDERER_GENERAL_GENESISPROFILE=SampleSingleMSPSolo orderer
+```
+
+### Terminal-2
+
+```
+export PATH=$PATH:$PWD/bin
+
+CORE_PEER_FILESYSTEMPATH=./hyperledger/production peer node start
+
+```
+
+### Terminal-3
+
+```
+export PATH=$PATH:$PWD/bin
+export FABRIC_CFG_PATH=$PWD/sampleconfig
+./runtest.sh
+```
+ execution of the shell script `runtest.sh` results to creation of channel artifacts , channel creation,  join channel etc.,. 
+  also installs and instantiates the chaincode.
 
  This defaults to 2 channels and 4 chaincodes. the defaults can be overridden by providing the followingf options 
   ` -C `  - # of Channels
@@ -25,5 +52,6 @@ This repository is to maintain the latest chaincodechecker code (This is tempora
 
 * Script continues to start two channels, each channel with # of chaincodes specified.
   Make sure you change the ccchecker<N>.json files as per your inputs to the script
+
 
 

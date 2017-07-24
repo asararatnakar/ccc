@@ -18,6 +18,8 @@ mkdir -p hyperledger/production/orderer
 
 export PATH=$PATH:$PWD/bin
 
+export FABRIC_CFG_PATH=$PWD/sampleconfig
+
 ORDERER_FILELEDGER_LOCATION=./hyperledger/production/orderer ORDERER_GENERAL_GENESISPROFILE=SampleSingleMSPSolo orderer
 ```
 
@@ -25,6 +27,8 @@ ORDERER_FILELEDGER_LOCATION=./hyperledger/production/orderer ORDERER_GENERAL_GEN
 
 ```
 export PATH=$PATH:$PWD/bin
+
+export FABRIC_CFG_PATH=$PWD/sampleconfig
 
 CORE_PEER_FILESYSTEMPATH=./hyperledger/production peer node start
 
@@ -34,7 +38,9 @@ CORE_PEER_FILESYSTEMPATH=./hyperledger/production peer node start
 
 ```
 export PATH=$PATH:$PWD/bin
+
 export FABRIC_CFG_PATH=$PWD/sampleconfig
+
 ./runtest.sh
 ```
  execution of the shell script `runtest.sh` results to creation of channel artifacts , channel creation,  join channel etc.,. 
@@ -44,14 +50,11 @@ export FABRIC_CFG_PATH=$PWD/sampleconfig
   ` -C `  - # of Channels
   ` -c `  - # of chaincodes
 
-	```
-	 ex: ./runtest.sh -C 3 -c 10
-	```
+```
+	ex: ./runtest.sh -C 3 -c 10
+```
 
-	here we are asking for 3 Channels and 10 chaincodes
+** 3 Channels and 10 chaincode s**
 
 * Script continues to start two channels, each channel with # of chaincodes specified.
   Make sure you change the ccchecker<N>.json files as per your inputs to the script
-
-
-
